@@ -27,6 +27,8 @@ const Footer = () => {
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
         <div>
           <img src={logosmart} alt="Company Logo" className="mb-6 w-36" />
+        </div>
+        <div>
           <h3 className="text-lg font-semibold mb-4 text-blue-400">
             ABOUT COMPANY
           </h3>
