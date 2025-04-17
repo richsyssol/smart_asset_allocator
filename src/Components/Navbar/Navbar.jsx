@@ -30,7 +30,7 @@ const navItems = [
     submenu: [
       { label: "Mutual Funds", path: "/products/mutual-funds" },
       { label: "Life Insurance", path: "/products/life-insurance" },
-      { label: "Deposits", path: "/products/deposits" },
+      { label: "General Insurance", path: "/products/general-insurance" },
     ],
   },
   {

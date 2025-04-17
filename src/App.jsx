@@ -25,6 +25,8 @@ import DreamCarCalculator from "./Pages/Planning/DreamCarCalculator";
 import SIPCalculator from "./Pages/Planning/SIPCalculator";
 import RetirementCalculator from "./Pages/Planning/RetirementCalculator";
 import DreamVacationCalculator from "./Pages/Planning/DreamVacationCalculator";
+import GeneralInsurancePage from "./Pages/Products/GeneralInsurancePage";
+import PageNotFound from "./Pages/ErrorPages/NotFound";
 
 function App() {
   const router = createBrowserRouter(
@@ -38,6 +40,10 @@ function App() {
         <Route
           path="/products/life-insurance"
           element={<LifeInsurancePage />}
+        />
+        <Route
+          path="/products/general-insurance"
+          element={<GeneralInsurancePage />}
         />
         <Route
           path="/goals/child-education"
@@ -62,6 +68,7 @@ function App() {
         <Route path="blog" element={<BlogPage />} />{" "}
         <Route path="/blog/:slug" element={<BlogDetailsPage />} />
         <Route path="contactus" element={<Contact />} />
+        <Route path="*" element={<PageNotFound />} />
       </Route>
     )
   );
