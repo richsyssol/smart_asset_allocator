@@ -11,7 +11,7 @@ const OurCorporateServices = () => {
         <div className="text-center mb-12">
           <h3 className="font-palanquin text-center text-2xl md:text-4xl font-bold leading-snug">
             Comprehensive Coverage,
-            <span className="ml-2 bg-gradient-to-r from-orange-500 to-orange-800 text-transparent bg-clip-text">
+            <span className="m-2 bg-gradient-to-r from-blue-500 to-blue-800 text-transparent bg-clip-text">
               Trusted Protection
             </span>
             for Every Corporate Risk
@@ -29,7 +29,7 @@ const OurCorporateServices = () => {
             transit, indemnity, or any other business risk; we have it all. Our
             aim is to provide full-proof business solutions at reasonable costs.
             <br />
-            <strong className="text-orange-700">
+            <strong className="text-blue-700">
               Consult us and get benefited.
             </strong>
           </p>

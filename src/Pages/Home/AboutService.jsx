@@ -58,7 +58,7 @@ const ServicesSection = () => {
           >
             <Card className="shadow-lg rounded-lg p-6">
               <h3 className="text-blue-600 text-4xl font-bold">
-                <Counter target={50} />+
+                <Counter target={20} />+
               </h3>
               <p className="text-gray-600">Years of Industry Experience</p>
             </Card>

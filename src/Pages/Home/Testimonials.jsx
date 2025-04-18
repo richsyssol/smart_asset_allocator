@@ -21,7 +21,7 @@ const Testimonials = () => {
     <section className="max-container bg-blue-50 py-24 w-full text-gray-700">
       <h3 className="font-palanquin text-center text-2xl md:text-4xl font-bold">
         What Our
-        <span className="m-2 bg-gradient-to-r from-orange-500 to-orange-800 text-transparent bg-clip-text">
+        <span className="m-2 bg-gradient-to-r from-blue-500 to-blue-800 text-transparent bg-clip-text">
           Customers
         </span>
         Say??

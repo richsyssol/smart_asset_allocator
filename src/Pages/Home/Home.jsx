@@ -22,10 +22,10 @@ const Home = () => {
       <OurCorporateServices />
       <FAQSection />
       <Blogs />
-      <VideoSection />
+      {/* <VideoSection /> */}
 
       <LogoGrid />
-      <ServicesSection />
+      {/* <ServicesSection /> */}
 
       <CTA />
       <Testimonials />

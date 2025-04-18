@@ -18,11 +18,13 @@ const navItems = [
   {
     label: "SERVICES",
     submenu: [
-      { label: "Financial Planning", path: "/services/financial-planning" },
-      { label: "Wealth Management", path: "/services/wealth-management" },
-      { label: "Insurance Planning", path: "/services/insurance-planning" },
-      { label: "Tax Planning", path: "/services/tax-planning" },
-      { label: "Retirement Planning", path: "/services/retirement-planning" },
+      { label: "Services Overview", path: "/services/our-services" },
+      { label: "Investment Portfolio", path: "/services/investment-portfolio" },
+      { label: "Tax Fundamentals", path: "/services/tax-fundamentals" },
+      { label: "Mutual Funds", path: "/services/mutual-funds" },
+      { label: "Insurance Portfolio", path: "/services/insurance-portfolio" },
+      { label: "Life Insurance", path: "/services/life-insurance" },
+      { label: "Estate Planning", path: "/services/estate-planning" },
     ],
   },
   {

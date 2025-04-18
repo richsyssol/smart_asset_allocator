@@ -1,13 +1,57 @@
 import { motion } from "framer-motion";
 import {
+  ArrowUpRight,
   ArrowRight,
   LineChart,
   Shield,
   PieChart,
   Landmark,
+  HandCoins,
+  TrendingUp,
+  Briefcase,
+  Gem,
+  Wallet,
 } from "lucide-react";
 
 const MutualFunds = () => {
+  const products = [
+    {
+      icon: <LineChart size={24} className="text-blue-500" />,
+      title: "Mutual Funds",
+      description:
+        "Diversified portfolio of stocks and bonds managed by professionals.",
+    },
+    {
+      icon: <HandCoins size={24} className="text-green-500" />,
+      title: "Loan Against MF",
+      description:
+        "Get loans using your mutual fund units as collateral without selling them.",
+    },
+    {
+      icon: <TrendingUp size={24} className="text-purple-500" />,
+      title: "Equity & ETFs*",
+      description:
+        "Direct equity investments and Exchange Traded Funds for seasoned investors.",
+    },
+    {
+      icon: <Briefcase size={24} className="text-orange-500" />,
+      title: "PMS",
+      description:
+        "Portfolio Management Services for high net-worth individuals.",
+    },
+    {
+      icon: <Gem size={24} className="text-yellow-500" />,
+      title: "Sov. Gold Bond*",
+      description:
+        "Sovereign Gold Bonds offering interest income plus gold price appreciation.",
+    },
+    {
+      icon: <Wallet size={24} className="text-red-500" />,
+      title: "NPS",
+      description:
+        "National Pension System for retirement planning with tax benefits.",
+    },
+  ];
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -40,61 +84,91 @@ const MutualFunds = () => {
     <div className="min-h-screen bg-gray-50 mt-20">
       {/* Product Basket Section - Matches the image */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
-          <div className="p-8">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={containerVariants}
-            >
-              <motion.div variants={itemVariants}>
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                  Product Basket
-                </h2>
-                <p className="text-gray-600 mb-6">
-                  Access a wide range of financial products under one window
-                  with online transaction facility
-                </p>
-              </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+          className="container mx-auto px-4 py-8"
+        >
+          <div className="flex items-center gap-4 mb-8">
+            <LineChart size={32} className="text-blue-600" />
+            <h1 className="text-3xl font-bold text-gray-800">
+              Mutual Funds & Investment Products
+            </h1>
+          </div>
 
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            {products.map((product, index) => (
               <motion.div
-                variants={itemVariants}
-                className="border-t border-gray-200 pt-6"
+                key={index}
+                whileHover={{ y: -5 }}
+                className="bg-white p-6 rounded-lg shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
               >
-                <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                  MUTUAL FUNDS
-                </h3>
-                <ul className="space-y-3">
-                  {[
-                    "LOAN AGAINST MF",
-                    "EQUITY & ETFs*",
-                    "PMS",
-                    "SOV.GOLD BOND*",
-                  ].map((item, index) => (
-                    <motion.li
-                      key={index}
-                      variants={itemVariants}
-                      whileHover={{ x: 5 }}
-                      className="flex items-center"
-                    >
-                      <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
-                      <span className="text-gray-700">{item}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-
+                <div className="flex items-center gap-3 mb-4">
+                  {product.icon}
+                  <h2 className="text-xl font-semibold">{product.title}</h2>
+                </div>
+                <p className="text-gray-600">{product.description}</p>
                 <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="mt-8 flex items-center text-blue-600 font-medium"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="mt-4 text-blue-600 font-medium flex items-center gap-1"
                 >
-                  KNOW MORE <ArrowRight className="ml-2 h-4 w-4" />
+                  Learn more <ArrowUpRight size={16} />
                 </motion.button>
               </motion.div>
-            </motion.div>
-          </div>
-        </div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="mt-12 bg-blue-50 p-8 rounded-lg"
+          >
+            <h2 className="text-2xl font-semibold text-blue-800 mb-6">
+              Investment Solutions Overview
+            </h2>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-lg font-medium text-gray-800 mb-3 flex items-center gap-2">
+                  <Landmark className="text-blue-500" /> Wealth Creation
+                </h3>
+                <p className="text-gray-600">
+                  Our diverse range of investment products helps you build
+                  wealth through different market conditions. From mutual funds
+                  to direct equities, we offer solutions for all risk appetites.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-medium text-gray-800 mb-3 flex items-center gap-2">
+                  <PieChart className="text-blue-500" /> Portfolio
+                  Diversification
+                </h3>
+                <p className="text-gray-600">
+                  Spread your investments across asset classes including
+                  equities, debt, gold, and more. Our experts can help you
+                  create a balanced portfolio matching your financial goals.
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-6 text-sm text-gray-500">
+              <p>
+                *ETFs and Sovereign Gold Bonds are subject to market risks.
+                Please read all scheme related documents carefully.
+              </p>
+            </div>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* Additional Content Sections */}

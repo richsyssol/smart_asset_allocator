@@ -13,6 +13,7 @@ import {
   Gem,
   ShieldCheck,
 } from "lucide-react";
+import LifeInsurance from "./LifeInsurance";
 
 const LifeInsurancePage = () => {
   // Animation variants
@@ -403,6 +404,7 @@ const LifeInsurancePage = () => {
           </motion.div>
         </motion.div>
       </div>
+      <LifeInsurance />
     </div>
   );
 };

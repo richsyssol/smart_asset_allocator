@@ -10,7 +10,7 @@ const OurServices = () => {
         <div className="text-center mb-12">
           <h3 className="font-palanquin text-center text-xl md:text-3xl font-bold">
             Insurance
-            <span className="m-2 bg-gradient-to-r from-orange-500 to-orange-800 text-transparent bg-clip-text">
+            <span className="m-2 bg-gradient-to-r from-blue-500 to-blue-800 text-transparent bg-clip-text">
               Provides You a Better
             </span>
             Future

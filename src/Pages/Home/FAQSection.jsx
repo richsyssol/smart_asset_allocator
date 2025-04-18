@@ -60,7 +60,7 @@ export default function FAQSection() {
             transition={{ duration: 0.6 }}
           >
             Common
-            <span className="m-2 bg-gradient-to-r from-orange-500 to-orange-800 text-transparent bg-clip-text">
+            <span className="m-2 bg-gradient-to-r from-blue-500 to-blue-800 text-transparent bg-clip-text">
               Frequently Asked
             </span>
             Questions

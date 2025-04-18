@@ -12,8 +12,6 @@ import Contact from "./Pages/Contact/Contact";
 import Home from "./Pages/Home/Home";
 import Services from "./Pages/Services/Services";
 import Aboutus from "./Pages/Aboutus/Aboutus";
-import Goals from "./Pages/Planning/Goals";
-import ProductLayout from "./Pages/Products/ProductLayout";
 import BlogDetailsPage from "./Pages/Blog/BlogDetailsPage";
 import BlogPage from "./Pages/Blog/BlogPage";
 import MutualFunds from "./Pages/Products/MutualFunds";
@@ -27,6 +25,8 @@ import RetirementCalculator from "./Pages/Planning/RetirementCalculator";
 import DreamVacationCalculator from "./Pages/Planning/DreamVacationCalculator";
 import GeneralInsurancePage from "./Pages/Products/GeneralInsurancePage";
 import PageNotFound from "./Pages/ErrorPages/NotFound";
+import ServicesOverview from "./Pages/Services/ServicesOverview";
+import GoalsLayout from "./Layout/GoalsLayout";
 
 function App() {
   const router = createBrowserRouter(
@@ -45,26 +45,19 @@ function App() {
           path="/products/general-insurance"
           element={<GeneralInsurancePage />}
         />
-        <Route
-          path="/goals/child-education"
-          element={<ChildEducationCalculator />}
-        />{" "}
-        <Route
-          path="/goals/child-wedding"
-          element={<ChildWeddingCalculator />}
-        />{" "}
-        <Route path="/goals/dream-home" element={<DreamHomeCalculator />} />{" "}
-        <Route path="/goals/dream-car" element={<DreamCarCalculator />} />{" "}
-        <Route
-          path="/goals/dream-vacation"
-          element={<DreamVacationCalculator />}
-        />{" "}
-        <Route
-          path="/goals/retirement-plan"
-          element={<RetirementCalculator />}
-        />{" "}
-        <Route path="/goals/sip-plan" element={<SIPCalculator />} />{" "}
-        <Route path="goals/:slug" element={<Goals />} />
+        <Route path="/goals" element={<GoalsLayout />}>
+          <Route
+            path="child-education"
+            element={<ChildEducationCalculator />}
+          />
+          <Route path="child-wedding" element={<ChildWeddingCalculator />} />
+          <Route path="dream-home" element={<DreamHomeCalculator />} />
+          <Route path="dream-car" element={<DreamCarCalculator />} />
+          <Route path="dream-vacation" element={<DreamVacationCalculator />} />
+          <Route path="retirement-plan" element={<RetirementCalculator />} />
+          <Route path="sip-plan" element={<SIPCalculator />} />
+        </Route>
+        <Route path="services/our-services" element={<ServicesOverview />} />
         <Route path="blog" element={<BlogPage />} />{" "}
         <Route path="/blog/:slug" element={<BlogDetailsPage />} />
         <Route path="contactus" element={<Contact />} />
