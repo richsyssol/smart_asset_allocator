@@ -52,10 +52,8 @@ const BlogPage = () => {
     },
   ];
 
-  // Recent posts for sidebar (last 3)
   const recentPosts = [...blogs].slice(0, 3);
 
-  // Updated categories for financial services
   const categories = [
     "Wealth Management",
     "Tax Planning",

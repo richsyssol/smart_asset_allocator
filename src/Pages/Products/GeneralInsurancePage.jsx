@@ -1,6 +1,7 @@
 // src/pages/Products/GeneralInsurance.jsx
 import { motion } from "framer-motion";
 import { Home, Car, BriefcaseMedical, Globe } from "lucide-react";
+import GeneralSection from "./GeneralInsurance/GeneralSection";
 
 const GeneralInsurance = () => {
   return (
@@ -9,12 +10,14 @@ const GeneralInsurance = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="container mx-auto px-4 py-8"
+      className="container mx-auto px-4 py-8 mt-28"
     >
       <div className="flex items-center gap-4 mb-8">
         <Globe size={32} className="text-green-600" />
         <h1 className="text-3xl font-bold text-gray-800">General Insurance</h1>
       </div>
+
+      <GeneralSection />
 
       <motion.div
         initial={{ y: 20, opacity: 0 }}

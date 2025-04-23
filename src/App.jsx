@@ -27,6 +27,7 @@ import GeneralInsurancePage from "./Pages/Products/GeneralInsurancePage";
 import PageNotFound from "./Pages/ErrorPages/NotFound";
 import ServicesOverview from "./Pages/Services/ServicesOverview";
 import GoalsLayout from "./Layout/GoalsLayout";
+import ProductDetailPage from "./Pages/Products/MutualFunds/ProductDetailPage";
 
 function App() {
   const router = createBrowserRouter(
@@ -60,6 +61,7 @@ function App() {
         <Route path="services/our-services" element={<ServicesOverview />} />
         <Route path="blog" element={<BlogPage />} />{" "}
         <Route path="/blog/:slug" element={<BlogDetailsPage />} />
+        <Route path="/product/:slug" element={<ProductDetailPage />} />
         <Route path="contactus" element={<Contact />} />
         <Route path="*" element={<PageNotFound />} />
       </Route>
