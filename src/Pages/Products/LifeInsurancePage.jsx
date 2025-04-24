@@ -1,5 +1,5 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Shield,
   Award,
@@ -16,6 +16,47 @@ import {
 import LifeInsurance from "./LifeInsurance";
 
 const LifeInsurancePage = () => {
+  const [showQuoteForm, setShowQuoteForm] = useState(false);
+  const [quoteFormData, setQuoteFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    dob: "",
+    gender: "",
+    smokingStatus: "",
+    income: "",
+    coverageAmount: "",
+    selectedPlan: "",
+    healthConditions: "",
+  });
+  const handleQuoteFormChange = (e) => {
+    const { name, value } = e.target;
+    setQuoteFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleQuoteSubmit = (e) => {
+    e.preventDefault();
+    // Here you would typically send the data to your backend
+    console.log("Quote request submitted:", quoteFormData);
+    alert("Thank you for your request! Our advisor will contact you shortly.");
+    setShowQuoteForm(false);
+    // Reset form
+    setQuoteFormData({
+      name: "",
+      email: "",
+      phone: "",
+      dob: "",
+      gender: "",
+      smokingStatus: "",
+      income: "",
+      coverageAmount: "",
+      selectedPlan: "",
+      healthConditions: "",
+    });
+  };
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -323,23 +364,230 @@ const LifeInsurancePage = () => {
                   </ul>
 
                   {/* CTA */}
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className={`w-full flex items-center justify-center px-4 py-2 rounded-lg ${
-                      plan.color === "yellow"
-                        ? "bg-yellow-500 hover:bg-yellow-600 text-white"
-                        : `bg-${plan.color}-500 hover:bg-${plan.color}-600 text-white`
-                    } font-medium transition-colors`}
-                  >
-                    Get Details
-                    <ChevronRight className="h-4 w-4 ml-2" />
-                  </motion.button>
                 </div>
               </motion.div>
             ))}
           </motion.div>
+          {/* Get Quote Form Modal */}
+          <AnimatePresence>
+            {showQuoteForm && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+                onClick={() => setShowQuoteForm(false)}
+              >
+                <motion.div
+                  initial={{ y: 50, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: 50, opacity: 0 }}
+                  className="bg-white rounded-xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <div className="p-6">
+                    <div className="flex justify-between items-center mb-6">
+                      <h3 className="text-2xl font-bold text-gray-900">
+                        Get Insurance Quote
+                      </h3>
+                      <button
+                        onClick={() => setShowQuoteForm(false)}
+                        className="text-gray-500 hover:text-gray-700"
+                      >
+                        <svg
+                          className="w-6 h-6"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M6 18L18 6M6 6l12 12"
+                          />
+                        </svg>
+                      </button>
+                    </div>
 
+                    <form onSubmit={handleQuoteSubmit} className="space-y-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1">
+                            Full Name*
+                          </label>
+                          <input
+                            type="text"
+                            name="name"
+                            value={quoteFormData.name}
+                            onChange={handleQuoteFormChange}
+                            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            required
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1">
+                            Email*
+                          </label>
+                          <input
+                            type="email"
+                            name="email"
+                            value={quoteFormData.email}
+                            onChange={handleQuoteFormChange}
+                            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            required
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1">
+                            Phone Number*
+                          </label>
+                          <input
+                            type="tel"
+                            name="phone"
+                            value={quoteFormData.phone}
+                            onChange={handleQuoteFormChange}
+                            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            required
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1">
+                            Date of Birth*
+                          </label>
+                          <input
+                            type="date"
+                            name="dob"
+                            value={quoteFormData.dob}
+                            onChange={handleQuoteFormChange}
+                            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            required
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1">
+                            Gender*
+                          </label>
+                          <select
+                            name="gender"
+                            value={quoteFormData.gender}
+                            onChange={handleQuoteFormChange}
+                            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            required
+                          >
+                            <option value="">Select</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                          </select>
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1">
+                            Smoking Status*
+                          </label>
+                          <select
+                            name="smokingStatus"
+                            value={quoteFormData.smokingStatus}
+                            onChange={handleQuoteFormChange}
+                            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            required
+                          >
+                            <option value="">Select</option>
+                            <option value="non-smoker">Non-smoker</option>
+                            <option value="smoker">Smoker</option>
+                          </select>
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1">
+                            Annual Income (₹)*
+                          </label>
+                          <input
+                            type="number"
+                            name="income"
+                            value={quoteFormData.income}
+                            onChange={handleQuoteFormChange}
+                            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            required
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1">
+                            Desired Coverage Amount (₹)*
+                          </label>
+                          <input
+                            type="number"
+                            name="coverageAmount"
+                            value={quoteFormData.coverageAmount}
+                            onChange={handleQuoteFormChange}
+                            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            required
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1">
+                            Interested Plan
+                          </label>
+                          <select
+                            name="selectedPlan"
+                            value={quoteFormData.selectedPlan}
+                            onChange={handleQuoteFormChange}
+                            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                          >
+                            <option value="">Any Plan</option>
+                            {insurancePlans.map((plan, index) => (
+                              <option key={index} value={plan.title}>
+                                {plan.title}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                        <div className="md:col-span-2">
+                          <label className="block text-sm font-medium text-gray-700 mb-1">
+                            Existing Health Conditions
+                          </label>
+                          <textarea
+                            name="healthConditions"
+                            value={quoteFormData.healthConditions}
+                            onChange={handleQuoteFormChange}
+                            rows="3"
+                            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="Any pre-existing conditions or health concerns..."
+                          ></textarea>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center">
+                        <input
+                          type="checkbox"
+                          id="agreeTerms"
+                          required
+                          className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                        />
+                        <label
+                          htmlFor="agreeTerms"
+                          className="ml-2 block text-sm text-gray-700"
+                        >
+                          I agree to the terms and conditions and authorize
+                          contact regarding insurance products.
+                        </label>
+                      </div>
+
+                      <div className="mt-6">
+                        <motion.button
+                          type="submit"
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                          className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+                        >
+                          Get Free Quote
+                        </motion.button>
+                      </div>
+                    </form>
+                  </div>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
           {/* FAQ/Additional Info Section */}
           <motion.div
             variants={itemVariants}
@@ -405,6 +653,30 @@ const LifeInsurancePage = () => {
         </motion.div>
       </div>
       <LifeInsurance />
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        className=" flex flex-col justify-center items-center mt-16 bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl p-8 md:p-12 text-center text-white"
+      >
+        <h3 className="text-3xl font-bold mb-4">
+          Start Your Investment Journey Today
+        </h3>
+        <p className="text-xl mb-8 max-w-2xl mx-auto">
+          Let our experts help you build a portfolio tailored to your financial
+          goals.
+        </p>
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="flex justify-center items-center px-8 py-3 bg-white text-blue-600 rounded-lg shadow-lg font-medium text-lg"
+          onClick={() => setShowQuoteForm(true)}
+        >
+          <Shield className="h-5 w-5 mr-2" />
+          Get Personalized Quote
+        </motion.button>
+      </motion.div>
     </div>
   );
 };

@@ -9,6 +9,7 @@ import Location from "./Location";
 import { aboutData } from "../../constants/aboutUs";
 import ContentWrapper from "../../Components/ContentWrapper/ContentWrapper";
 import { useLocation } from "react-router-dom";
+import WhoWeAre from "./WhoWeAre";
 
 const Aboutus = () => {
   const visionRef = useRef(null);
@@ -152,7 +153,7 @@ const Aboutus = () => {
             </div>
           </div>
         </motion.div>
-
+        <WhoWeAre />
         {/* Enhanced Key Strengths */}
         <motion.div
           className="mt-20"

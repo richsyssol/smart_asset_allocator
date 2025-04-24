@@ -95,7 +95,7 @@ const Navbar = () => {
       {/* Main Navbar */}
       <nav
         className="fixed w-full left-0 transition-all duration-300 z-[90] shadow-sm bg-white"
-        style={{ top: hideTopBar ? "0" : "40px" }}
+        style={{ top: hideTopBar ? "0" : "38px" }}
       >
         <div className="flex justify-between items-center px-4 md:px-10 py-3">
           {/* Logo */}

@@ -331,7 +331,7 @@ function GeneralSection() {
   const currentTabData = insuranceData.generalInsurance[activeTab];
 
   return (
-    <section className="w-full bg-white">
+    <section className="w-full bg-white mb-10">
       {/* Hero Section with Background Image */}
       <div className="relative h-96 w-full overflow-hidden">
         <motion.div
@@ -470,112 +470,109 @@ function GeneralSection() {
 
         {/* Get Quote Form */}
         <AnimatePresence>
-          {showQuoteForm && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 20 }}
-              transition={{ duration: 0.3 }}
-              className="mt-8 bg-gradient-to-br from-blue-50 to-white rounded-xl p-8 shadow-lg"
-            >
-              <div className="flex justify-between items-center mb-8">
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-800">
-                    Get a Quote for {selectedPlan?.name}
-                  </h3>
-                  <p className="text-gray-600 mt-1">
-                    Fill out the form below and our agent will contact you
-                    shortly
-                  </p>
-                </div>
-                <button
-                  onClick={() => setShowQuoteForm(false)}
-                  className="text-gray-500 hover:text-gray-700"
-                >
-                  <Plus className="w-6 h-6 transform rotate-45" />
-                </button>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.3 }}
+            className="mt-8 bg-gradient-to-br from-blue-50 to-white rounded-xl p-8 shadow-lg"
+          >
+            <div className="flex justify-between items-center mb-8">
+              <div>
+                <h3 className="text-2xl font-bold text-gray-800">
+                  Get a Quote for {selectedPlan?.name}
+                </h3>
+                <p className="text-gray-600 mt-1">
+                  Fill out the form below and our agent will contact you shortly
+                </p>
               </div>
-              <form onSubmit={handleSubmitQuote}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Full Name
-                    </label>
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Email Address
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Phone Number
-                    </label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Selected Plan
-                    </label>
-                    <input
-                      type="text"
-                      name="plan"
-                      value={formData.plan}
-                      readOnly
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-gray-100"
-                    />
-                  </div>
-                  <div className="md:col-span-2">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Additional Information
-                    </label>
-                    <textarea
-                      name="additionalInfo"
-                      value={formData.additionalInfo}
-                      onChange={handleInputChange}
-                      rows={4}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-                      placeholder="Tell us about your specific requirements..."
-                    />
-                  </div>
+              <button
+                onClick={() => setShowQuoteForm(false)}
+                className="text-gray-500 hover:text-gray-700"
+              >
+                <Plus className="w-6 h-6 transform rotate-45" />
+              </button>
+            </div>
+            <form onSubmit={handleSubmitQuote}>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Full Name
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                    required
+                  />
                 </div>
-                <div className="mt-8 flex justify-end">
-                  <motion.button
-                    type="submit"
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
-                    className="flex items-center px-8 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition-all"
-                  >
-                    Submit Quote Request
-                    <ArrowRight className="ml-2 w-5 h-5" />
-                  </motion.button>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                    required
+                  />
                 </div>
-              </form>
-            </motion.div>
-          )}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Selected Plan
+                  </label>
+                  <input
+                    type="text"
+                    name="plan"
+                    value={formData.plan}
+                    readOnly
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-gray-100"
+                  />
+                </div>
+                <div className="md:col-span-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Additional Information
+                  </label>
+                  <textarea
+                    name="additionalInfo"
+                    value={formData.additionalInfo}
+                    onChange={handleInputChange}
+                    rows={4}
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                    placeholder="Tell us about your specific requirements..."
+                  />
+                </div>
+              </div>
+              <div className="mt-8 flex justify-end">
+                <motion.button
+                  type="submit"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="flex items-center px-8 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition-all"
+                >
+                  Submit Quote Request
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </motion.button>
+              </div>
+            </form>
+          </motion.div>
         </AnimatePresence>
 
         {/* Benefits Section */}
